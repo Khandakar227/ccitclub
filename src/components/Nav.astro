@@ -3,7 +3,7 @@ import Data from '/assets/global.json';
 
 const {blogDomain} = await Data;
 
-const {brand, logo} = Astro.props;
+const {brand, logo, showBgColor} = Astro.props;
 const nav_items = [{text:'Home', href:'/'}, {text:'About', href:'/about'},{text:'Executives', href:'/executives'},
                     {text:'Blogs', href: blogDomain}, {text: 'Programs', href:'/programs'}, {text: 'Join us', href: '/joinus'}];
 ---
@@ -16,7 +16,7 @@ const nav_items = [{text:'Home', href:'/'}, {text:'About', href:'/about'},{text:
      </h1>
     <div class="nav--container">
         <div class="nav--icon"><button>☰</button></div>
-        <ul class="nav--items">
+        <ul class={showBgColor?"nav--items bgColor": "nav--items"}>
             {nav_items.map((item, i) => (
                 <li><a data-text={item.text} href={item.href}><button class="transparent--button">{item.text}</button></a></li>
             ))}
@@ -117,5 +117,6 @@ nav h1 {align-items: center;display: flex;gap: 5px;font-size: 22px;}
     background: inherit;
     backdrop-filter: blur(30px);
 }
+.bgColor {background-color: white;}
 }
 </style>
